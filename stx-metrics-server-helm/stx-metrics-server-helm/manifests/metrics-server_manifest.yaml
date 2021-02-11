@@ -1,0 +1,88 @@
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: metrics-server-psp-rolebinding
+data:
+  chart_name: psp-rolebinding
+  release: metrics-server-psp-rolebinding
+  namespace: metrics-server
+  values:
+    rolebindingNamespace: metrics-server
+    serviceAccount: metrics-server
+  source:
+    location: http://172.17.0.1:8080/helm_charts/stx-platform/psp-rolebinding-0.1.0.tgz
+    subpath: psp-rolebinding
+    type: tar
+    reference: master
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+      - labels:
+          release_group: metrics-server-psp-rolebinding
+        type: job
+  wait:
+    labels:
+      release_group: metrics-server-psp-rolebinding
+    resources: []
+    timeout: 1800
+  dependencies: []
+---
+schema: armada/Chart/v1
+metadata:
+  schema: metadata/Document/v1
+  name: metrics-server
+data:
+  chart_name: metrics-server
+  release: metrics-server
+  namespace: metrics-server
+  wait:
+    timeout: 1800
+    labels:
+      app: metrics-server
+  install:
+    no_hooks: false
+  upgrade:
+    no_hooks: false
+    pre:
+      delete:
+        - type: job
+          labels:
+            app: metrics-server
+  values:
+    imagePullSecrets: [{"name": "default-registry-key"}]
+    args: 
+      - --kubelet-insecure-tls
+    replicas: 1
+    image:
+      repository: k8s.gcr.io/metrics-server/metrics-server
+      tag: "v0.4.1"
+    nodeSelector:
+      node-role.kubernetes.io/master: ""
+  source:
+    type: tar
+    location: http://172.17.0.1/helm_charts/stx-platform/metrics-server-1.0.0.tgz
+    subpath: metrics-server
+    reference: master
+  dependencies: []
+---
+schema: armada/ChartGroup/v1
+metadata:
+  schema: metadata/Document/v1
+  name: metrics-server
+data:
+  description: "StarlingX metrics-server"
+  sequenced: true
+  chart_group:
+    - metrics-server
+    - metrics-server-psp-rolebinding
+---
+schema: armada/Manifest/v1
+metadata:
+  schema: metadata/Document/v1
+  name: metrics-server-manifest
+data:
+  release_prefix: ms
+  chart_groups:
+    - metrics-server

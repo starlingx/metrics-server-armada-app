@@ -1,0 +1,14 @@
+apiVersion: v2
+name: metrics-server
+description: Helm chart for the Kubernetes Metrics Server.
+type: application
+version: 1.0.0
+appVersion: 0.4.1
+keywords:
+  - kubernetes
+  - metrics-server
+  - metrics
+home: https://github.com/kubernetes-sigs/metrics-server
+icon: https://avatars.githubusercontent.com/u/36015203?s=400&v=4
+sources:
+  - https://github.com/kubernetes-sigs/metrics-server
