@@ -75,8 +75,8 @@ data:
   description: "StarlingX metrics-server"
   sequenced: true
   chart_group:
-    - metrics-server
     - metrics-server-psp-rolebinding
+    - metrics-server
 ---
 schema: armada/Manifest/v1
 metadata:
