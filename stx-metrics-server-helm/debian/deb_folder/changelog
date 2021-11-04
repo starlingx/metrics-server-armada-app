@@ -1,0 +1,5 @@
+stx-metrics-server-helm (1.0-1) unstable; urgency=medium
+
+  * Initial release.
+
+ --  Bernardo Decco de Siqueira <bernardo.deccodesiqueira@windriver.com>  Wed, 05 Nov 2021 16:00:42 +0000
