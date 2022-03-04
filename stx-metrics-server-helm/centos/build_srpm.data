@@ -5,3 +5,8 @@ SRC_BASE_SRCREV=9fa1ccbdbae09c9726642bfbb5b20e27cd729f2c
 COPY_LIST_TO_TAR="\
     $STX_BASE/helm-charts/psp-rolebinding/psp-rolebinding/helm-charts \
 "
+
+OPT_DEP_LIST="\
+    $STX_BASE/metrics-server-armada-app/metrics-server-helm \
+"
+

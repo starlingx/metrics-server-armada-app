@@ -1,6 +1,0 @@
-{{- if .Values.sampleApp.create -}}
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: metric-server-test-app
-{{- end }}

@@ -22,6 +22,7 @@ BuildArch: noarch
 
 BuildRequires: helm
 BuildRequires: chartmuseum
+BuildRequires: metrics-server-helm
 
 %description
 StarlingX Metrics Server Armada Helm Charts
@@ -53,6 +54,7 @@ cp files/metadata.yaml %{app_staging}
 cp manifests/*.yaml %{app_staging}
 mkdir -p %{app_staging}/charts
 cp helm-charts/*.tgz %{app_staging}/charts
+cp %{helm_folder}/metrics*.tgz %{app_staging}/charts
 cd %{app_staging}
 
 # Populate metadata
