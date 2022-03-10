@@ -86,8 +86,6 @@ service:
   port: 443
   type: ClusterIP
 
-resources: {}
-
 nodeSelector: {}
 
 tolerations: []
