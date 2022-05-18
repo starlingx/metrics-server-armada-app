@@ -1,0 +1,60 @@
+#
+# Copyright (c) 2022 Wind River Systems, Inc.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+apiVersion: "helm.toolkit.fluxcd.io/v2beta1"
+kind: HelmRelease
+metadata:
+  name: metrics-server
+  labels:
+    chart_group: metrics-server
+spec:
+  releaseName: ms-metrics-server
+  chart:
+    spec:
+      chart: metrics-server
+      version: 3.8.2
+      sourceRef:
+        kind: HelmRepository
+        name: stx-platform
+  interval: 5m
+  timeout: 30m
+  test:
+    enable: false
+  install:
+    disableHooks: false
+  upgrade:
+    disableHooks: false
+    force: true
+  valuesFrom:
+    - kind: Secret
+      name: metrics-server-static-overrides
+      valuesKey: metrics-server-static-overrides.yaml
+    - kind: Secret
+      name: metrics-server-system-overrides
+      valuesKey: metrics-server-system-overrides.yaml
+---
+apiVersion: "helm.toolkit.fluxcd.io/v2beta1"
+kind: HelmRelease
+metadata:
+  name: metrics-server-psp-rolebinding
+  labels:
+    chart_group: metrics-server-psp-rolebinding
+spec:
+  releaseName: ms-metrics-server-psp-rolebinding
+  chart:
+    spec:
+      chart: psp-rolebinding
+      version: 0.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: stx-platform
+  interval: 5m
+  timeout: 30m
+  test:
+    enable: false
+  install:
+    disableHooks: false
+  upgrade:
+    force: true

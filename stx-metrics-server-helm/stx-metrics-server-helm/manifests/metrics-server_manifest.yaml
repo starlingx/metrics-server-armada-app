@@ -52,7 +52,7 @@ data:
             app: metrics-server
   values:
     imagePullSecrets: [{"name": "default-registry-key"}]
-    args: 
+    args:
       - --kubelet-insecure-tls
     replicas: 1
     image:
