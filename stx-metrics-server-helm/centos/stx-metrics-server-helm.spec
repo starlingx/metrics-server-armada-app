@@ -85,7 +85,13 @@ rm -fr %{app_staging}
 
 %install
 install -d -m 755 %{buildroot}/%{app_folder}
+install -p -D -m 755 %{_builddir}/%{app_tarball_armada} %{buildroot}/%{app_folder}
 install -p -D -m 755 %{_builddir}/%{app_tarball_fluxcd} %{buildroot}/%{app_folder}
+
+%files
+%defattr(-,root,root,-)
+%{app_folder}/%{app_tarball_armada}
+
 
 %files fluxcd
 %defattr(-,root,root,-)
