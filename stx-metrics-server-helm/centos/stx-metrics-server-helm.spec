@@ -23,15 +23,15 @@ BuildRequires: chartmuseum
 BuildRequires: metrics-server-helm
 
 %description
-StarlingX Metrics Server Armada Helm Charts
+StarlingX Metrics Server FluxCD Helm Charts
 
-%package fluxcd
-Summary: StarlingX Metrics Server Controller Application FluxCD Helm Charts
+%package armada
+Summary: StarlingX Metrics Server Controller Application Armada Helm Charts
 Group: base
 License: Apache-2.0
 
-%description fluxcd
-StarlingX Metrics Server Controller Application FluxCD Helm Charts
+%description armada
+StarlingX Metrics Server Controller Application Armada Helm Charts
 
 %prep
 %setup
@@ -52,8 +52,8 @@ kill %1
 
 # Create a chart tarball compliant with sysinv kube-app.py
 %define app_staging %{_builddir}/staging
-%define app_tarball_armada %{app_name}-%{version}-%{tis_patch_ver}.tgz
-%define app_tarball_fluxcd %{app_name}-fluxcd-%{version}-%{tis_patch_ver}.tgz
+%define app_tarball_armada %{app_name}-armada-%{version}-%{tis_patch_ver}.tgz
+%define app_tarball_fluxcd %{app_name}-%{version}-%{tis_patch_ver}.tgz
 
 # Setup staging
 mkdir -p %{app_staging}
@@ -88,11 +88,11 @@ install -d -m 755 %{buildroot}/%{app_folder}
 install -p -D -m 755 %{_builddir}/%{app_tarball_armada} %{buildroot}/%{app_folder}
 install -p -D -m 755 %{_builddir}/%{app_tarball_fluxcd} %{buildroot}/%{app_folder}
 
-%files
+%files armada
 %defattr(-,root,root,-)
 %{app_folder}/%{app_tarball_armada}
 
 
-%files fluxcd
+%files
 %defattr(-,root,root,-)
 %{app_folder}/%{app_tarball_fluxcd}
