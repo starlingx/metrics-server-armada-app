@@ -15,6 +15,7 @@ export APP_TARBALL_FLUXCD = $(APP_NAME)-$(APP_VERSION).tgz
 export HELM_REPO = stx-platform
 export STAGING_ARMADA = staging-armada
 export STAGING_FLUXCD = staging-fluxcd
+export HELM_FOLDER = /usr/lib/helm
 
 %:
 	dh $@
@@ -42,6 +43,7 @@ override_dh_auto_build:
 	cp manifests/metrics-server_manifest.yaml $(STAGING_ARMADA)
 	mkdir -p $(STAGING_ARMADA)/charts
 	cp helm-charts/*.tgz $(STAGING_ARMADA)/charts
+	cp $(HELM_FOLDER)/metrics*.tgz $(STAGING_ARMADA)/charts
 
 	# Populate metadata.
 	sed -i 's/@APP_NAME@/$(APP_NAME)/g' $(STAGING_ARMADA)/metadata.yaml
@@ -64,6 +66,7 @@ override_dh_auto_build:
 	cp -Rv fluxcd-manifests $(STAGING_FLUXCD)
 	mkdir -p $(STAGING_FLUXCD)/charts
 	cp helm-charts/*.tgz $(STAGING_FLUXCD)/charts
+	cp $(HELM_FOLDER)/metrics*.tgz $(STAGING_FLUXCD)/charts
 
 	# Populate metadata.
 	sed -i 's/@APP_NAME@/$(APP_NAME)/g' $(STAGING_FLUXCD)/metadata.yaml

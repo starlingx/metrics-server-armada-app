@@ -19,7 +19,7 @@ Source3: Makefile
 
 BuildArch:     noarch
 
-Patch01: 0001-PATCH-Add-sample-app-to-metrics-server.patch
+Patch01: 0001-Add-sample-app-to-metrics-server.patch
 
 BuildRequires: helm
 BuildRequires: chartmuseum

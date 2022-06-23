@@ -1,25 +1,35 @@
 #!/usr/bin/make -f
 # export DH_VERBOSE = 1
 
-export ROOT = debian/tmp
 export METRICS_MGR_PKG="metrics-server-3.8.2.tgz"
+export HELM_FOLDER=/usr/lib/helm
+export ROOT=debian/tmp
+export APP_FOLDER=$(ROOT)$(HELM_FOLDER)
 
 %:
 	dh $@
 
 override_dh_auto_build:
+	# Unpack metrics-server source
 	tar xzf $(METRICS_MGR_PKG)
+
+	# Apply patch to code
+	cd metrics-server && patch -p1 < ../0001-Add-sample-app-to-metrics-server.patch
+
 	# Host a server for the helm charts.
 	chartmuseum --debug --port=8879 --context-path='/charts' --storage="local" \
 		--storage-local-rootdir="." &
+
 	sleep 2
-	# Copy Chart yaml file to build folder
-	cp metrics-server/Chart.yaml debian/Chart.yaml
+
 	# Create the TGZ file.
-	make
+	make metrics-server
+
 	# Terminate the helm chart server.
 	pkill chartmuseum
 
 override_dh_auto_install:
+	install -d -m 755 $(APP_FOLDER)
+	install -p -D -m 755 *.tgz $(APP_FOLDER)
 
 override_dh_auto_test:

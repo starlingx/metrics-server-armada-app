@@ -1,8 +1,9 @@
-From 2df39de8e32eccc76fe62b97eaf0bc5debc58023 Mon Sep 17 00:00:00 2001
-From: Delfino Curado <delfinogomes.curadofilho@windriver.com>
-Date: Thu, 3 Mar 2022 10:36:48 -0300
-Subject: [PATCH] [PATCH] Add sample app to metrics-server
+From eb8e6805914d912be374eb86731a88c3936b91b8 Mon Sep 17 00:00:00 2001
+From: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
+Date: Wed, 22 Jun 2022 22:08:25 -0400
+Subject: [PATCH] Add sample app to metrics-server
 
+Signed-off-by: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
 ---
  templates/sample-app-cluster-role-binding.yml | 16 ++++++++++++
  templates/sample-app-cluster-role.yml         | 17 +++++++++++++
@@ -124,7 +125,7 @@ index 0000000..5e116c0
 +{{- end }}
 \ No newline at end of file
 diff --git a/values.yaml b/values.yaml
-index 6a97505..7f40309 100644
+index 6a97505..5167d25 100644
 --- a/values.yaml
 +++ b/values.yaml
 @@ -128,3 +128,12 @@ nodeSelector: {}
@@ -138,8 +139,8 @@ index 6a97505..7f40309 100644
 +  create: false
 +  image:
 +    repository: docker.io/starlingx/stx-metrics-server-sample-app
-+    tag: master-centos-stable-latest
++    tag: stx.7.0-v1.0.0
 +
 -- 
-2.17.1
+2.29.2
 
