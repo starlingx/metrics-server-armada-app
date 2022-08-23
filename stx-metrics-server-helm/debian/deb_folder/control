@@ -14,6 +14,6 @@ Package: stx-metrics-server-helm
 Section: libs
 Architecture: any
 Depends: ${misc:Depends}
-Description: StarlingX Metrics Server Armada Helm Charts
- This package contains Armada helm charts for the metrics server
+Description: StarlingX Metrics Server FluxCD Helm Charts
+ This package contains FluxCD helm charts for the metrics server
  application.
