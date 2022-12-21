@@ -1,2 +1,0 @@
-stx-metrics-server-helm
-

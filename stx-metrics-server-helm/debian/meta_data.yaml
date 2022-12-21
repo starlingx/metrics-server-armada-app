@@ -6,4 +6,6 @@ src_files:
   - ${MY_REPO}/stx/helm-charts/psp-rolebinding/psp-rolebinding/helm-charts
 revision:
   dist: $STX_DIST
-  PKG_GITREVCOUNT: true
+  GITREVCOUNT:
+    SRC_DIR: ${MY_REPO}/stx/metrics-server-armada-app
+    BASE_SRCREV: 9fa1ccbdbae09c9726642bfbb5b20e27cd729f2c
