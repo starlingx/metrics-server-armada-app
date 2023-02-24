@@ -9,5 +9,6 @@ dl_files:
     md5sum: 93f38ed20dd55618b4bf67584908b56c
 revision:
   dist: $STX_DIST
-  PKG_GITREVCOUNT: true
-
+  GITREVCOUNT:
+    BASE_SRCREV: 512747aec471066dd4a2dbe9e260b887be6319c8
+    SRC_DIR: ${MY_REPO}/stx/metrics-server-armada-app/metrics-server-helm/
