@@ -9,5 +9,4 @@ kind: Kustomization
 namespace: metrics-server
 resources:
   - base
-  - metrics-server-psp-rolebinding
   - metrics-server

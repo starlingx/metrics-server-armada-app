@@ -40,7 +40,6 @@ override_dh_auto_build:
 	cp files/metadata.yaml $(STAGING_FLUXCD)
 	cp -Rv fluxcd-manifests $(STAGING_FLUXCD)
 	mkdir -p $(STAGING_FLUXCD)/charts
-	cp helm-charts/*.tgz $(STAGING_FLUXCD)/charts
 	cp $(HELM_FOLDER)/metrics*.tgz $(STAGING_FLUXCD)/charts
 
 	# Populate metadata.

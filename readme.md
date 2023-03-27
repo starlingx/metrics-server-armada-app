@@ -43,7 +43,6 @@ metrics-server-armada-app
 │       │       │   ├── clusterrole.yaml
 │       │       │   ├── deployment.yaml
 │       │       │   ├── pdb.yaml
-│       │       │   ├── psp.yaml
 │       │       │   ├── rolebinding.yaml
 │       │       │   ├── serviceaccount.yaml
 │       │       │   └── service.yaml
