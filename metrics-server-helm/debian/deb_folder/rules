@@ -1,7 +1,7 @@
 #!/usr/bin/make -f
 # export DH_VERBOSE = 1
 
-export METRICS_MGR_PKG="metrics-server-3.8.2.tgz"
+export METRICS_MGR_PKG="metrics-server-3.8.4.tgz"
 export HELM_FOLDER=/usr/lib/helm
 export ROOT=debian/tmp
 export APP_FOLDER=$(ROOT)$(HELM_FOLDER)
