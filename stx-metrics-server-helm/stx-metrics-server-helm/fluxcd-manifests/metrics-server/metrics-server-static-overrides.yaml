@@ -9,7 +9,7 @@ args:
 replicas: 1
 image:
   repository: k8s.gcr.io/metrics-server/metrics-server
-  tag: "v0.6.1"
+  tag: "v0.6.2"
 tolerations:
   - key: "node-role.kubernetes.io/control-plane"
     operator: "Exists"
