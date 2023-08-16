@@ -1,9 +1,9 @@
-From 980f1e15690d8e38026d51312a3517ae26e7c80e Mon Sep 17 00:00:00 2001
+From a85c2dad038d2538a58a2c34a3e659ce73b0f601 Mon Sep 17 00:00:00 2001
 From: Fernando Santos <Fernando.PereiradosSantos@windriver.com>
-Date: Mon, 27 Mar 2023 20:00:20 +0000
+Date: Wed, 9 Aug 2023 20:00:20 +0000
 Subject: [PATCH] Add sample app to metrics-server
 
-Signed-off-by: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
+Signed-off-by: Fernando Santos <Fernando.PereiradosSantos@windriver.com>
 ---
  templates/sample-app-cluster-role-binding.yml | 16 ++++++++++++
  templates/sample-app-cluster-role.yml         | 17 +++++++++++++
@@ -125,10 +125,10 @@ index 0000000..5e116c0
 +{{- end }}
 \ No newline at end of file
 diff --git a/values.yaml b/values.yaml
-index 21205ab..2cd8598 100644
+index fba10aa..b31a5fb 100644
 --- a/values.yaml
 +++ b/values.yaml
-@@ -148,3 +148,12 @@ topologySpreadConstraints: []
+@@ -180,3 +180,12 @@ topologySpreadConstraints: []
  deploymentAnnotations: {}
  
  schedulerName: ""
@@ -142,5 +142,5 @@ index 21205ab..2cd8598 100644
 +    tag: stx.7.0-v1.0.0
 +
 -- 
-2.30.2
+2.17.1
 

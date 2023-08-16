@@ -23,14 +23,8 @@ override_dh_auto_build:
 	############
 	#  COMMON  #
 	############
-	# Host a server for the helm charts.
-	chartmuseum --debug --port=8879 --context-path='/charts' --storage="local" --storage-local-rootdir="." &
-	sleep 2
-	helm repo add local http://localhost:8879/charts
 	# Create the TGZ file.
 	cd helm-charts && make
-	# Terminate the helm chart server.
-	pkill chartmuseum
 
 	############
 	#  FLUXCD  #

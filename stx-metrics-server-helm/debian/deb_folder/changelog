@@ -1,3 +1,9 @@
+stx-metrics-server-helm (1.1-0) unstable; urgency=medium
+
+  * New upstream release.
+
+ --  Fernando Pereira dos Santos <Fernando.PereiradosSantos@windriver.com> Wed, 9 Ago 2023 11:43: +0000
+
 stx-metrics-server-helm (1.0-1) unstable; urgency=medium
 
   * Initial release.

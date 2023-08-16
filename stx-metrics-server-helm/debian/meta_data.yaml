@@ -1,6 +1,6 @@
 ---
 debname: stx-metrics-server-helm
-debver: 1.0-1
+debver: 1.1-0
 src_path: stx-metrics-server-helm
 revision:
   dist: $STX_DIST

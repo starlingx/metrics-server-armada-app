@@ -6,49 +6,61 @@ This Armada App is responsible to deliver the metrics server inside the ISO.
 ## Structure
 ```
 metrics-server-armada-app
-├── centos_build_layer.cfg
-├── centos_iso_image.inc
-├── centos_pkg_dirs
-├── centos_pkg_dirs_containers
-├── centos_stable_docker_images.inc
+├── debian_build_layer.cfg
+├── debian_iso_image.inc
+├── debian_pkg_dirs
+├── debian_stable_docker_images.inc
+├── metrics-server-helm
+│   ├── debian
+│   │   ├── deb_folder
+│   │   │   ├── changelog
+│   │   │   ├── control
+│   │   │   ├── copyright
+│   │   │   ├── metrics-server-helm.install
+│   │   │   └── rules
+│   │   └── meta_data.yaml
+│   └── files
+│       ├── 0001-Add-sample-app-to-metrics-server.patch
+│       └── Makefile
 ├── readme.md
 ├── requirements.txt
 ├── sample-app
-│   ├── centos
-│   │   ├── docker
-│   │   │   ├── Dockerfile
-│   │   │   └── src
-│   │   │       ├── package.json
-│   │   │       └── sample-application.js
+│   ├── debian
 │   │   └── sample-app.stable_docker_image
+│   ├── docker
+│   │   ├── Dockerfile.debian
+│   │   └── src
+│   │       ├── package.json
+│   │       └── sample-application.js
 │   └── readme.md
 ├── stx-metrics-server-helm
-│   ├── centos
-│   │   ├── build_srpm.data
-│   │   └── stx-metrics-server-helm.spec
+│   ├── debian
+│   │   ├── deb_folder
+│   │   │   ├── changelog
+│   │   │   ├── control
+│   │   │   ├── copyright
+│   │   │   ├── rules
+│   │   │   ├── source
+│   │   │   │   └── format
+│   │   │   └── stx-metrics-server-helm.install
+│   │   └── meta_data.yaml
 │   └── stx-metrics-server-helm
 │       ├── files
-│       │   ├── index.yaml
-│       │   ├── metadata.yaml
-│       │   └── repositories.yaml
-│       ├── helm-charts
 │       │   ├── Makefile
+│       │   └── metadata.yaml
+│       ├── fluxcd-manifests
+│       │   ├── base
+│       │   │   ├── helmrepository.yaml
+│       │   │   ├── kustomization.yaml
+│       │   │   └── namespace.yaml
+│       │   ├── kustomization.yaml
 │       │   └── metrics-server
-│       │       ├── Chart.yaml
-│       │       ├── templates
-│       │       │   ├── apiservice.yaml
-│       │       │   ├── clusterrole-aggregated-reader.yaml
-│       │       │   ├── clusterrolebinding-auth-delegator.yaml
-│       │       │   ├── clusterrolebinding.yaml
-│       │       │   ├── clusterrole.yaml
-│       │       │   ├── deployment.yaml
-│       │       │   ├── pdb.yaml
-│       │       │   ├── rolebinding.yaml
-│       │       │   ├── serviceaccount.yaml
-│       │       │   └── service.yaml
-│       │       └── values.yaml
-│       └── manifests
-│           └── metrics-server_manifest.yaml
+│       │       ├── helmrelease.yaml
+│       │       ├── kustomization.yaml
+│       │       ├── metrics-server-static-overrides.yaml
+│       │       └── metrics-server-system-overrides.yaml
+│       └── helm-charts
+│           └── Makefile
 ├── test-requirements.txt
 └── tox.ini
 ```
@@ -56,8 +68,6 @@ Important files
 - metrics-server_manifest.yaml - Armada Manifest
 - helm-charts - Metrics Server helm charts
 - stx-metrics-server-helm.spec - Steps to generate
-- centos_iso_image.inc - It inserts the rpm inside the ISO
-- centos_pkg_dirs - Folders to build the pkgs
 - sample-app - Sample app application
 
 ## Install

@@ -9,13 +9,13 @@ Containerized application that retrieves metrics server data
 ## Structure
 ```
 sample-app
-├── centos
-│   ├── docker
-│   │   ├── Dockerfile
-│   │   └── src
-│   │       ├── package.json
-│   │       └── sample-application.js
+├── debian
 │   └── sample-app.stable_docker_image
+├── docker
+│   ├── Dockerfile.debian
+│   └── src
+│       ├── package.json
+│       └── sample-application.js
 └── readme.md
 ```
 Important files
