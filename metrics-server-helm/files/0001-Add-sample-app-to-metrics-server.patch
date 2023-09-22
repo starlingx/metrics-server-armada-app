@@ -1,26 +1,23 @@
-From a85c2dad038d2538a58a2c34a3e659ce73b0f601 Mon Sep 17 00:00:00 2001
-From: Fernando Santos <Fernando.PereiradosSantos@windriver.com>
-Date: Wed, 9 Aug 2023 20:00:20 +0000
+From da1d57493657751bc5cce4379f254182e3ea0e73 Mon Sep 17 00:00:00 2001
+From: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
+Date: Thu, 21 Sep 2023 15:24:19 -0300
 Subject: [PATCH] Add sample app to metrics-server
 
-Signed-off-by: Fernando Santos <Fernando.PereiradosSantos@windriver.com>
 ---
  templates/sample-app-cluster-role-binding.yml | 16 ++++++++++++
  templates/sample-app-cluster-role.yml         | 17 +++++++++++++
  templates/sample-app-deployment.yml           | 25 +++++++++++++++++++
- templates/sample-app-namespace.yml            |  6 +++++
  templates/sample-app-service-account.yml      |  9 +++++++
  values.yaml                                   |  9 +++++++
- 6 files changed, 82 insertions(+)
+ 5 files changed, 76 insertions(+)
  create mode 100644 templates/sample-app-cluster-role-binding.yml
  create mode 100644 templates/sample-app-cluster-role.yml
  create mode 100644 templates/sample-app-deployment.yml
- create mode 100644 templates/sample-app-namespace.yml
  create mode 100644 templates/sample-app-service-account.yml
 
 diff --git a/templates/sample-app-cluster-role-binding.yml b/templates/sample-app-cluster-role-binding.yml
 new file mode 100644
-index 0000000..ad4e316
+index 0000000..cffc2f1
 --- /dev/null
 +++ b/templates/sample-app-cluster-role-binding.yml
 @@ -0,0 +1,16 @@
@@ -38,9 +35,8 @@ index 0000000..ad4e316
 +subjects:
 +- kind: ServiceAccount
 +  name: metric-server-test-app
-+  namespace: metric-server-test-app
++  namespace: metrics-server
 +{{- end }}
-\ No newline at end of file
 diff --git a/templates/sample-app-cluster-role.yml b/templates/sample-app-cluster-role.yml
 new file mode 100644
 index 0000000..c78fb28
@@ -67,7 +63,7 @@ index 0000000..c78fb28
 \ No newline at end of file
 diff --git a/templates/sample-app-deployment.yml b/templates/sample-app-deployment.yml
 new file mode 100644
-index 0000000..d26498b
+index 0000000..26de1cc
 --- /dev/null
 +++ b/templates/sample-app-deployment.yml
 @@ -0,0 +1,25 @@
@@ -76,7 +72,7 @@ index 0000000..d26498b
 +kind: Deployment
 +metadata:
 +  name: metric-server-test-app-deployment
-+  namespace: metric-server-test-app
++  namespace: metrics-server
 +spec:
 +  selector:
 +    matchLabels:
@@ -96,21 +92,9 @@ index 0000000..d26498b
 +          value: /var/run/secrets/kubernetes.io/serviceaccount/token
 +      serviceAccountName: metric-server-test-app
 +{{- end -}}
-diff --git a/templates/sample-app-namespace.yml b/templates/sample-app-namespace.yml
-new file mode 100644
-index 0000000..5a83759
---- /dev/null
-+++ b/templates/sample-app-namespace.yml
-@@ -0,0 +1,6 @@
-+{{- if .Values.sampleApp.create -}}
-+apiVersion: v1
-+kind: Namespace
-+metadata:
-+  name: metric-server-test-app
-+{{- end }}
 diff --git a/templates/sample-app-service-account.yml b/templates/sample-app-service-account.yml
 new file mode 100644
-index 0000000..5e116c0
+index 0000000..8c799c2
 --- /dev/null
 +++ b/templates/sample-app-service-account.yml
 @@ -0,0 +1,9 @@
@@ -121,9 +105,8 @@ index 0000000..5e116c0
 +  labels:
 +    app: metric-server-test-app
 +  name: metric-server-test-app
-+  namespace: metric-server-test-app
++  namespace: metrics-server
 +{{- end }}
-\ No newline at end of file
 diff --git a/values.yaml b/values.yaml
 index fba10aa..b31a5fb 100644
 --- a/values.yaml
@@ -142,5 +125,4 @@ index fba10aa..b31a5fb 100644
 +    tag: stx.7.0-v1.0.0
 +
 -- 
-2.17.1
-
+2.25.1
