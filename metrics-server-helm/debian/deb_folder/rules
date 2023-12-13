@@ -15,6 +15,7 @@ override_dh_auto_build:
 
 	# Apply patch to code
 	cd metrics-server && patch -p1 < ../0001-Add-sample-app-to-metrics-server.patch
+	cd metrics-server && patch -p1 < ../0002-Add-label-platform-application-to-pods.patch
 
 	# Create the TGZ file.
 	make metrics-server

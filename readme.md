@@ -21,6 +21,7 @@ metrics-server-armada-app
 │   │   └── meta_data.yaml
 │   └── files
 │       ├── 0001-Add-sample-app-to-metrics-server.patch
+|       ├── 0002-Add-label-platform-application-to-pods.patch
 │       └── Makefile
 ├── readme.md
 ├── requirements.txt
