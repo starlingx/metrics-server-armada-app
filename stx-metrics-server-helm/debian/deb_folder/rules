@@ -41,6 +41,10 @@ override_dh_auto_build:
 	sed -i 's/@APP_VERSION@/$(APP_VERSION)/g' $(STAGING_FLUXCD)/metadata.yaml
 	sed -i 's/@HELM_REPO@/$(HELM_REPO)/g' $(STAGING_FLUXCD)/metadata.yaml
 
+	# Copy the plugins: installed in the buildroot
+	mkdir -p $(STAGING_FLUXCD)/plugins
+	cp /plugins/*.whl $(STAGING_FLUXCD)/plugins
+
 	# Package fluxcd
 	cp -R fluxcd-manifests $(STAGING_FLUXCD)/
 
@@ -59,4 +63,3 @@ override_dh_auto_install:
 override_dh_auto_test:
 
 override_dh_usrlocal:
-
