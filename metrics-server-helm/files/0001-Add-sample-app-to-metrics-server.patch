@@ -1,7 +1,7 @@
-From da1d57493657751bc5cce4379f254182e3ea0e73 Mon Sep 17 00:00:00 2001
+From 84565d75db7481edd3c27a29c010afb4fb688b4c Mon Sep 17 00:00:00 2001
 From: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
 Date: Thu, 21 Sep 2023 15:24:19 -0300
-Subject: [PATCH] Add sample app to metrics-server
+Subject: [PATCH 1/2] Add sample app to metrics-server
 
 ---
  templates/sample-app-cluster-role-binding.yml | 16 ++++++++++++
@@ -125,4 +125,5 @@ index fba10aa..b31a5fb 100644
 +    tag: stx.7.0-v1.0.0
 +
 -- 
-2.25.1
+2.34.1
+
