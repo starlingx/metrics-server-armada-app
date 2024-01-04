@@ -25,3 +25,7 @@ class MetricsServerAppLifecycleOperator(base.AppLifecycleOperator):
         :param app: AppOperator.Application object
         :param hook_info: LifecycleHookInfo object
         """
+
+        # Use the default behaviour for other hooks
+        super(MetricsServerAppLifecycleOperator, self).app_lifecycle_actions(
+            context, conductor_obj, app_op, app, hook_info)
