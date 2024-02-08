@@ -1,15 +1,21 @@
-From 84565d75db7481edd3c27a29c010afb4fb688b4c Mon Sep 17 00:00:00 2001
+From 4c95ace6c320856a955a0066722649eff02ee256 Mon Sep 17 00:00:00 2001
 From: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
 Date: Thu, 21 Sep 2023 15:24:19 -0300
 Subject: [PATCH 1/2] Add sample app to metrics-server
+
+This patch allows the creation of a metrics-server sample-app. It adds
+the necessary elements to templates to create a sample-app pod on a
+metrics-server namespace.
+
+Signed-off-by: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
 
 ---
  templates/sample-app-cluster-role-binding.yml | 16 ++++++++++++
  templates/sample-app-cluster-role.yml         | 17 +++++++++++++
  templates/sample-app-deployment.yml           | 25 +++++++++++++++++++
- templates/sample-app-service-account.yml      |  9 +++++++
+ templates/sample-app-service-account.yml      | 11 ++++++++
  values.yaml                                   |  9 +++++++
- 5 files changed, 76 insertions(+)
+ 5 files changed, 78 insertions(+)
  create mode 100644 templates/sample-app-cluster-role-binding.yml
  create mode 100644 templates/sample-app-cluster-role.yml
  create mode 100644 templates/sample-app-deployment.yml
@@ -94,12 +100,14 @@ index 0000000..26de1cc
 +{{- end -}}
 diff --git a/templates/sample-app-service-account.yml b/templates/sample-app-service-account.yml
 new file mode 100644
-index 0000000..8c799c2
+index 0000000..81b0ef6
 --- /dev/null
 +++ b/templates/sample-app-service-account.yml
-@@ -0,0 +1,9 @@
+@@ -0,0 +1,11 @@
 +{{- if .Values.sampleApp.create -}}
 +apiVersion: v1
++imagePullSecrets:
++- name: default-registry-key
 +kind: ServiceAccount
 +metadata:
 +  labels:
@@ -125,5 +133,4 @@ index fba10aa..b31a5fb 100644
 +    tag: stx.7.0-v1.0.0
 +
 -- 
-2.34.1
-
+2.25.1
