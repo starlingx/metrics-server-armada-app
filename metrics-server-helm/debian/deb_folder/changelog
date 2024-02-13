@@ -1,3 +1,9 @@
+metrics-server-helm (3.12-0) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.com> Mon, 12 Feb 2024 16:35:00 +0000
+
 metrics-server-helm (3.11-0) unstable; urgency=medium
 
   * New upstream release.

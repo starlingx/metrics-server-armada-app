@@ -1,12 +1,12 @@
 ---
 debname: metrics-server-helm
-debver: 3.11-0
+debver: 3.12-0
 src_path: files
 dl_files:
-  metrics-server-3.11.0.tgz:
+  metrics-server-3.12.0.tgz:
     topdir: null
-    url: https://github.com/kubernetes-sigs/metrics-server/releases/download/metrics-server-helm-chart-3.11.0/metrics-server-3.11.0.tgz
-    md5sum: bd58754f21818235b22bad05b2a502c6
+    url: https://github.com/kubernetes-sigs/metrics-server/releases/download/metrics-server-helm-chart-3.12.0/metrics-server-3.12.0.tgz
+    sha256sum: 19df2fa9c4c6e1ec4f134da56ae9c3e6b610bfd5674744115c9e9864c5f3debe
 revision:
   dist: $STX_DIST
   GITREVCOUNT:

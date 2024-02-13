@@ -4,11 +4,11 @@ Upstream-Contact: StarlingX Developers <starlingx-discuss@lists.starlingx.io>
 Source: https://opendev.org/starlingx/metrics-server-armada-app/
 
 Files: *
-Copyright: (c) 2017-2023 Wind River Systems, Inc
+Copyright: (c) 2017-2024 Wind River Systems, Inc
 License: Apache-2
 
 Files: debian/*
-Copyright: 2021-2023 Wind River Systems, Inc
+Copyright: 2021-2024 Wind River Systems, Inc
 License: Apache-2
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.

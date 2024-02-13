@@ -23,14 +23,12 @@ Important files
 - Dockerfile - Application Dockerfile
 
 ## Run application
-> Deploy tha sample app using `system helm-override-update --reuse-values 
---set atribute=value <app name> <chart name> <namespace>` folow the steps below:
+> Deploy tha sample app using `system helm-override-update --reuse-values --set atribute=value <app name> <chart name> <namespace>` follow the steps below:
 
-- Run  `system helm-override-update --reuse-values 
---set sampleApp.create=true metrics-server metrics-server metrics-server`
-- Run `system application apply metrics-server` to apply the override
-- Run `kubectl get pods -n metric-server-test-app` to get the name of the pod
-- Run `kubectl logs -n metric-server-test-app pod-name --tail 1 -f` to see the logs and check if the sample application is requesting successfully the metrics server api
+- Run `system helm-override-update --reuse-values --set sampleApp.create=true metrics-server metrics-server metrics-server`
+- Run `system application-apply metrics-server` to apply the override
+- Run `kubectl get pods -n metrics-server` to get the name of the pod.
+- Run `kubectl logs -n metrics-server <pod-name> --tail 1 -f` to see the logs and check if the sample application is requesting successfully the metrics server api
 
 ## Endpoints
 
@@ -40,5 +38,3 @@ All of the following endpoints are GET endpoints and they are under the base pat
 - `/namespaces/{namespace}/pods` - all pod metrics within namespace with support for all-namespaces
 - `/namespaces/{namespace}/pods/{pod}` - metrics for a specified pod
 - `/pods` - all pod metrics of all namespaces
-
-

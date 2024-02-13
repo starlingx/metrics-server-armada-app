@@ -1,6 +1,6 @@
-From acb714d1a5b52b7246f616858fa2ee5e44f51289 Mon Sep 17 00:00:00 2001
-From: dbarbosa <david.barbosabastos@windriver.com>
-Date: Wed, 13 Dec 2023 18:39:15 -0300
+From 82a35a0a883f4a0d4f004af08b8b83c0cc5075d1 Mon Sep 17 00:00:00 2001
+From: Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.com>
+Date: Tue, 13 Feb 2024 09:35:43 -0300
 Subject: [PATCH 2/2] Add label platform/application to pods
 
 Add support to 'app.starlingx.io/component' to be overwritten
@@ -8,16 +8,19 @@ by user override, with possible values being 'platform' and
 'application'. With 'platform' being the default value. This
 change will also restart the pods if the label in namespace
 change.
+
+Signed-off-by: Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.com>
+Signed-off-by: David Barbosa Bastos <David.BarbosaBastos@windriver.com>
 ---
  templates/deployment.yaml | 2 ++
  values.yaml               | 1 +
  2 files changed, 3 insertions(+)
 
 diff --git a/templates/deployment.yaml b/templates/deployment.yaml
-index 1d656fc..097c55f 100644
+index 48cda7fe..77c1938f 100644
 --- a/templates/deployment.yaml
 +++ b/templates/deployment.yaml
-@@ -21,12 +21,14 @@ spec:
+@@ -24,12 +24,14 @@ spec:
    template:
      metadata:
        labels:
@@ -33,17 +36,16 @@ index 1d656fc..097c55f 100644
        {{- end }}
      spec:
 diff --git a/values.yaml b/values.yaml
-index b31a5fb..e6992c9 100644
+index 54567451..2182c37f 100644
 --- a/values.yaml
 +++ b/values.yaml
 @@ -45,6 +45,7 @@ apiService:
    # The PEM encoded CA bundle for TLS verification
    caBundle: ""
- 
+
 +isApplicationLabel: false
  commonLabels: {}
  podLabels: {}
  podAnnotations: {}
--- 
+--
 2.34.1
-

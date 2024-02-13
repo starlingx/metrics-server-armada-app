@@ -1,21 +1,21 @@
-From 4c95ace6c320856a955a0066722649eff02ee256 Mon Sep 17 00:00:00 2001
-From: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
-Date: Thu, 21 Sep 2023 15:24:19 -0300
+From 358191904954c1568f8e7545ea19c0764c338fb0 Mon Sep 17 00:00:00 2001
+From: Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.com>
+Date: Tue, 13 Feb 2024 09:13:29 -0300
 Subject: [PATCH 1/2] Add sample app to metrics-server
 
 This patch allows the creation of a metrics-server sample-app. It adds
 the necessary elements to templates to create a sample-app pod on a
 metrics-server namespace.
 
+Signed-off-by: Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.com>
 Signed-off-by: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
-
 ---
  templates/sample-app-cluster-role-binding.yml | 16 ++++++++++++
  templates/sample-app-cluster-role.yml         | 17 +++++++++++++
  templates/sample-app-deployment.yml           | 25 +++++++++++++++++++
  templates/sample-app-service-account.yml      | 11 ++++++++
- values.yaml                                   |  9 +++++++
- 5 files changed, 78 insertions(+)
+ values.yaml                                   |  8 ++++++
+ 5 files changed, 77 insertions(+)
  create mode 100644 templates/sample-app-cluster-role-binding.yml
  create mode 100644 templates/sample-app-cluster-role.yml
  create mode 100644 templates/sample-app-deployment.yml
@@ -23,7 +23,7 @@ Signed-off-by: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
 
 diff --git a/templates/sample-app-cluster-role-binding.yml b/templates/sample-app-cluster-role-binding.yml
 new file mode 100644
-index 0000000..cffc2f1
+index 00000000..cffc2f1a
 --- /dev/null
 +++ b/templates/sample-app-cluster-role-binding.yml
 @@ -0,0 +1,16 @@
@@ -32,7 +32,7 @@ index 0000000..cffc2f1
 +kind: ClusterRoleBinding
 +metadata:
 +  labels:
-+    app: metric-server-test-app
++    app: metrics-server-test-app
 +  name: access-metrics-api
 +roleRef:
 +  apiGroup: rbac.authorization.k8s.io
@@ -40,12 +40,12 @@ index 0000000..cffc2f1
 +  name: access-metrics-api
 +subjects:
 +- kind: ServiceAccount
-+  name: metric-server-test-app
++  name: metrics-server-test-app
 +  namespace: metrics-server
 +{{- end }}
 diff --git a/templates/sample-app-cluster-role.yml b/templates/sample-app-cluster-role.yml
 new file mode 100644
-index 0000000..c78fb28
+index 00000000..c78fb282
 --- /dev/null
 +++ b/templates/sample-app-cluster-role.yml
 @@ -0,0 +1,17 @@
@@ -54,7 +54,7 @@ index 0000000..c78fb28
 +kind: ClusterRole
 +metadata:
 +  labels:
-+    app: metric-server-test-app
++    app: metrics-server-test-app
 +  name: access-metrics-api
 +rules:
 +- apiGroups:
@@ -69,7 +69,7 @@ index 0000000..c78fb28
 \ No newline at end of file
 diff --git a/templates/sample-app-deployment.yml b/templates/sample-app-deployment.yml
 new file mode 100644
-index 0000000..26de1cc
+index 00000000..26de1cc9
 --- /dev/null
 +++ b/templates/sample-app-deployment.yml
 @@ -0,0 +1,25 @@
@@ -77,17 +77,17 @@ index 0000000..26de1cc
 +apiVersion: apps/v1
 +kind: Deployment
 +metadata:
-+  name: metric-server-test-app-deployment
++  name: metrics-server-test-app-deployment
 +  namespace: metrics-server
 +spec:
 +  selector:
 +    matchLabels:
-+      app: metric-server-test-app
++      app: metrics-server-test-app
 +  replicas: 1
 +  template:
 +    metadata:
 +      labels:
-+        app: metric-server-test-app
++        app: metrics-server-test-app
 +    spec:
 +      containers:
 +      - name: sample-app
@@ -96,11 +96,11 @@ index 0000000..26de1cc
 +        env:
 +        - name: TOKEN_PATH
 +          value: /var/run/secrets/kubernetes.io/serviceaccount/token
-+      serviceAccountName: metric-server-test-app
++      serviceAccountName: metrics-server-test-app
 +{{- end -}}
 diff --git a/templates/sample-app-service-account.yml b/templates/sample-app-service-account.yml
 new file mode 100644
-index 0000000..81b0ef6
+index 00000000..81b0ef6a
 --- /dev/null
 +++ b/templates/sample-app-service-account.yml
 @@ -0,0 +1,11 @@
@@ -111,19 +111,18 @@ index 0000000..81b0ef6
 +kind: ServiceAccount
 +metadata:
 +  labels:
-+    app: metric-server-test-app
-+  name: metric-server-test-app
++    app: metrics-server-test-app
++  name: metrics-server-test-app
 +  namespace: metrics-server
 +{{- end }}
 diff --git a/values.yaml b/values.yaml
-index fba10aa..b31a5fb 100644
+index 4f6b9219..54567451 100644
 --- a/values.yaml
 +++ b/values.yaml
-@@ -180,3 +180,12 @@ topologySpreadConstraints: []
- deploymentAnnotations: {}
- 
+@@ -195,5 +195,13 @@ deploymentAnnotations: {}
+
  schedulerName: ""
-+
+
 +# If you want to deploy a sample app application to test metrics server
 +# Set the create value to true
 +sampleApp:
@@ -132,5 +131,7 @@ index fba10aa..b31a5fb 100644
 +    repository: docker.io/starlingx/stx-metrics-server-sample-app
 +    tag: stx.7.0-v1.0.0
 +
--- 
-2.25.1
+ tmpVolume:
+   emptyDir: {}
+--
+2.34.1

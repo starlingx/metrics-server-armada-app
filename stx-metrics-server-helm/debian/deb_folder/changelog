@@ -1,3 +1,9 @@
+stx-metrics-server-helm (1.2-0) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.com> Mon, 12 Feb 2024 16:57:00 +0000
+
 stx-metrics-server-helm (1.1-0) unstable; urgency=medium
 
   * New upstream release.

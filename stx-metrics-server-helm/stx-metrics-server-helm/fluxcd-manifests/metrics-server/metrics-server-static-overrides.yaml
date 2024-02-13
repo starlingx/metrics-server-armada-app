@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022-2023 Wind River Systems, Inc.
+# Copyright (c) 2022-2024 Wind River Systems, Inc.
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -9,7 +9,7 @@ args:
 replicas: 1
 image:
   repository: registry.k8s.io/metrics-server/metrics-server
-  tag: "v0.6.4"
+  tag: "v0.7.0"
 tolerations:
   - key: "node-role.kubernetes.io/control-plane"
     operator: "Exists"
