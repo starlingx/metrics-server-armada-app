@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+# export DH_VERBOSE = 1
+
+export DEB_VERSION = $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
+export PATCH_VERSION = $(shell echo $(DEB_VERSION) | cut -f 4 -d '.')
+export CHART_BASE_VERSION = $(shell echo $(DEB_VERSION) | sed 's/-/./' | cut -d '.' -f 1-3)
+export CHART_VERSION = $(CHART_BASE_VERSION)+STX.$(PATCH_VERSION)
+
+export HELM_FOLDER=/usr/lib/helm
+export ROOT=debian/tmp
+export APP_FOLDER=$(ROOT)$(HELM_FOLDER)
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	# Move metrics-server source
+	mkdir -p metrics-server
+	mv $(shell ls -1 | egrep -v 'Makefile|debian' | tr '\n' ' ') metrics-server
+
+	# Create the TGZ file.
+	make CHART_VERSION=$(CHART_VERSION) metrics-server
+
+override_dh_auto_install:
+	install -d -m 755 $(APP_FOLDER)
+	install -p -D -m 755 metrics-server*.tgz $(APP_FOLDER)
+
+override_dh_auto_test:

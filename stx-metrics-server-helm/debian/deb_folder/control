@@ -16,5 +16,5 @@ Section: libs
 Architecture: any
 Depends: ${misc:Depends}
 Description: StarlingX Metrics Server FluxCD Helm Charts
- This package contains FluxCD helm charts for the metrics server
+ This package contains FluxCD manifests for the metrics server
  application.

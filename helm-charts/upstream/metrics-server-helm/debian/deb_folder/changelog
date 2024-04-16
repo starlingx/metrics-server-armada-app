@@ -1,0 +1,23 @@
+metrics-server-helm (3.12-0) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.com>  Mon, 12 Feb 2024 16:35:00 +0000
+
+metrics-server-helm (3.11-0) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Fernando Pereira dos Santos <Fernando.PereiradosSantos@windriver.com>  Wed, 9 Ago 2023 11:43: +0000
+
+metrics-server-helm (3.8-4) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Fernando Pereira dos Santos <Fernando.PereiradosSantos@windriver.com>  Fri, 10 Mar 2023 07:12: +0000
+
+metrics-server-helm (1.0-0) unstable; urgency=medium
+
+  * Initial release.
+
+ -- Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>  Thu, 24 Mar 2022 17:50: +0000
