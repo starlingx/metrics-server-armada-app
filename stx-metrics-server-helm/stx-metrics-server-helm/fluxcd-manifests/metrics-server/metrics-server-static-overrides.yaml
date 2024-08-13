@@ -19,3 +19,9 @@ tolerations:
     effect: "NoSchedule"
 nodeSelector:
   node-role.kubernetes.io/control-plane: ""
+
+resources: null
+
+addonResizer:
+  resources:
+    requests: null
