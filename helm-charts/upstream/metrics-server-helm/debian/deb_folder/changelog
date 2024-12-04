@@ -1,3 +1,9 @@
+metrics-server-helm (3.12-2) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Arthur Antonio Duarte Freire <arthurantonio.duartefreire@windriver.com>  Mon, 4 Dez 2024 11:43:00 +0300
+
 metrics-server-helm (3.12-1) unstable; urgency=medium
 
   * New upstream release.
