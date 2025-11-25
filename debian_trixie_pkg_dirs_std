@@ -1,0 +1,3 @@
+helm-charts/upstream/metrics-server-helm
+python3-k8sapp-metrics-server
+stx-metrics-server-helm
