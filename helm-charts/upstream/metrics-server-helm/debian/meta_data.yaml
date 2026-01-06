@@ -1,16 +1,16 @@
 ---
 debname: metrics-server-helm
-debver: 3.12-2
+debver: 3.13-0
 src_path: metrics-server-helm
 dl_path:
-  name: metrics-server-3.12.2.tgz
-  url: https://github.com/kubernetes-sigs/metrics-server/releases/download/metrics-server-helm-chart-3.12.2/metrics-server-3.12.2.tgz
-  sha256sum: e904ffa2fe33c429e12cac8aa013ba38f42d944e315d060e94230a53b98985cf
+  name: metrics-server-3.13.0.tgz
+  url: https://github.com/kubernetes-sigs/metrics-server/releases/download/metrics-server-helm-chart-3.13.0/metrics-server-3.13.0.tgz
+  sha256sum: fb929902e3b7565663cdd1734f31d63735c932be1541a7228b5aeef6d2348a1f
 src_files:
   - metrics-server-helm/files/Makefile
 revision:
   dist: $STX_DIST
   stx_patch: 1
   GITREVCOUNT:
-    BASE_SRCREV: b2aeb9752f9f21790bc127c34b29cc88135f5fb4
+    BASE_SRCREV: 516be26f5d36ffce493ee85dac0c948f44c08a4e
     SRC_DIR: ${MY_REPO}/stx/metrics-server-armada-app/helm-charts/upstream/metrics-server-helm

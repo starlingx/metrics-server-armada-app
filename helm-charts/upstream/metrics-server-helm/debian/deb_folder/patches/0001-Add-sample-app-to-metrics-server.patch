@@ -1,14 +1,13 @@
-From 358191904954c1568f8e7545ea19c0764c338fb0 Mon Sep 17 00:00:00 2001
+From 5974993bf523b7a1c1118c6461b5002211daed18 Mon Sep 17 00:00:00 2001
 From: Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.com>
-Date: Tue, 13 Feb 2024 09:13:29 -0300
-Subject: [PATCH 1/2] Add sample app to metrics-server
+Date: Tue, 14 Oct 2025 16:36:18 -0300
+Subject: [PATCH] Add sample app to metrics-server
 
 This patch allows the creation of a metrics-server sample-app. It adds
 the necessary elements to templates to create a sample-app pod on a
 metrics-server namespace.
 
 Signed-off-by: Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.com>
-Signed-off-by: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
 ---
  templates/sample-app-cluster-role-binding.yml | 16 ++++++++++++
  templates/sample-app-cluster-role.yml         | 17 +++++++++++++
@@ -23,7 +22,7 @@ Signed-off-by: Luiz Felipe Kina <LuizFelipe.EiskeKina@windriver.com>
 
 diff --git a/templates/sample-app-cluster-role-binding.yml b/templates/sample-app-cluster-role-binding.yml
 new file mode 100644
-index 00000000..cffc2f1a
+index 0000000..82e8e88
 --- /dev/null
 +++ b/templates/sample-app-cluster-role-binding.yml
 @@ -0,0 +1,16 @@
@@ -45,7 +44,7 @@ index 00000000..cffc2f1a
 +{{- end }}
 diff --git a/templates/sample-app-cluster-role.yml b/templates/sample-app-cluster-role.yml
 new file mode 100644
-index 00000000..c78fb282
+index 0000000..f374581
 --- /dev/null
 +++ b/templates/sample-app-cluster-role.yml
 @@ -0,0 +1,17 @@
@@ -69,7 +68,7 @@ index 00000000..c78fb282
 \ No newline at end of file
 diff --git a/templates/sample-app-deployment.yml b/templates/sample-app-deployment.yml
 new file mode 100644
-index 00000000..26de1cc9
+index 0000000..57ed52f
 --- /dev/null
 +++ b/templates/sample-app-deployment.yml
 @@ -0,0 +1,25 @@
@@ -100,7 +99,7 @@ index 00000000..26de1cc9
 +{{- end -}}
 diff --git a/templates/sample-app-service-account.yml b/templates/sample-app-service-account.yml
 new file mode 100644
-index 00000000..81b0ef6a
+index 0000000..2aefcc9
 --- /dev/null
 +++ b/templates/sample-app-service-account.yml
 @@ -0,0 +1,11 @@
@@ -116,10 +115,10 @@ index 00000000..81b0ef6a
 +  namespace: metrics-server
 +{{- end }}
 diff --git a/values.yaml b/values.yaml
-index 4f6b9219..54567451 100644
+index 2094035..18c3be3 100644
 --- a/values.yaml
 +++ b/values.yaml
-@@ -195,5 +195,13 @@ deploymentAnnotations: {}
+@@ -197,6 +197,14 @@ deploymentAnnotations: {}
 
  schedulerName: ""
 
@@ -133,5 +132,6 @@ index 4f6b9219..54567451 100644
 +
  tmpVolume:
    emptyDir: {}
+
 --
 2.34.1
