@@ -1,10 +1,10 @@
 ---
 debname: stx-metrics-server-helm
-debver: 1.5-0
+debver: 1.5-1
 src_path: stx-metrics-server-helm
 revision:
   stx_patch: 0
   dist: $STX_DIST
   GITREVCOUNT:
     SRC_DIR: ${MY_REPO}/stx/metrics-server-armada-app
-    BASE_SRCREV: 516be26f5d36ffce493ee85dac0c948f44c08a4e
+    BASE_SRCREV: a2ebc8080f5c7559124d92482c2de8fa24987492
