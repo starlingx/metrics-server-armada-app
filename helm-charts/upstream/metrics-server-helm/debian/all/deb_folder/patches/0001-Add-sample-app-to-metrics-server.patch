@@ -11,10 +11,10 @@ Signed-off-by: Erickson Silva de Oliveira <Erickson.SilvadeOliveira@windriver.co
 ---
  templates/sample-app-cluster-role-binding.yml | 16 ++++++++++++
  templates/sample-app-cluster-role.yml         | 17 +++++++++++++
- templates/sample-app-deployment.yml           | 25 +++++++++++++++++++
+ templates/sample-app-deployment.yml           | 34 +++++++++++++++++++
  templates/sample-app-service-account.yml      | 11 ++++++++
  values.yaml                                   |  8 ++++++
- 5 files changed, 77 insertions(+)
+ 5 files changed, 86 insertions(+)
  create mode 100644 templates/sample-app-cluster-role-binding.yml
  create mode 100644 templates/sample-app-cluster-role.yml
  create mode 100644 templates/sample-app-deployment.yml
@@ -71,7 +71,7 @@ new file mode 100644
 index 0000000..57ed52f
 --- /dev/null
 +++ b/templates/sample-app-deployment.yml
-@@ -0,0 +1,25 @@
+@@ -0,0 +1,34 @@
 +{{- if .Values.sampleApp.create -}}
 +apiVersion: apps/v1
 +kind: Deployment
@@ -92,6 +92,15 @@ index 0000000..57ed52f
 +      - name: sample-app
 +        image: {{ printf "%s:%s" .Values.sampleApp.image.repository (.Values.sampleApp.image.tag | default "latest") }}
 +        imagePullPolicy: IfNotPresent
++        securityContext:
++          allowPrivilegeEscalation: false
++          runAsNonRoot: true
++          runAsUser: 1000
++          seccompProfile:
++            type: RuntimeDefault
++          capabilities:
++            drop:
++              - ALL
 +        env:
 +        - name: TOKEN_PATH
 +          value: /var/run/secrets/kubernetes.io/serviceaccount/token
